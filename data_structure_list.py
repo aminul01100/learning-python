@@ -60,9 +60,32 @@ average_gpa = total_gpa / number_of_courses
 print("Average GPA: ", round(average_gpa, 2))  # round the average GPA to 2 decimal places
 """
 
+"""
 random_list = [1, 2, 3, 4, 5]
 random_list.pop() # removes the last element from the list
 random_list.remove(2) # removes the first occurrence of the value 2 from the list
 print(random_list)
 print("Length of the list: ", len(random_list)) # prints the length of the list
 
+random_list.append(6) # adds the value 6 to the end of the list
+print(random_list)
+"""
+
+# taking different type of data in a list
+student_district_list = ["Dhaka", "Chittagong", "Khulna", "Rajshahi", "Barisal", 
+                        "Barisal", "Chittagong", "Dhaka", "Sylhet", "Rangpur"]
+unique_districts = set(student_district_list) # using set to get unique districts
+# unique_districts_list = list(unique_districts) # converting the set back to a list
+unique_districts_sorted = sorted(unique_districts) # sorting the list of unique districts
+# print("Unique Districts: ", unique_districts_sorted)
+
+# index = 0
+# while index < len(student_district_list):
+#     print("District: ", student_district_list[index])
+#     index = index + 1
+
+for index in range(5, 10, 2):
+    print("District: ", student_district_list[index])
+
+# range(start, stop, step) - generates a sequence of numbers from start to stop with a step (increment/decrement)
+# range(5, 10, 2) - generates the numbers 5, 7, 9 (start=5, stop=10, step=2)

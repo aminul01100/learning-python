@@ -71,6 +71,12 @@ random_list.append(6) # adds the value 6 to the end of the list
 print(random_list)
 """
 
+# Discussing set
+"""
+# initializing a set
+unique_numbers_set = {1, 2, 3, 4, 5}
+print(unique_numbers_set)
+
 # taking different type of data in a list
 student_district_list = ["Dhaka", "Chittagong", "Khulna", "Rajshahi", "Barisal", 
                         "Barisal", "Chittagong", "Dhaka", "Sylhet", "Rangpur"]
@@ -89,3 +95,70 @@ for index in range(5, 10, 2):
 
 # range(start, stop, step) - generates a sequence of numbers from start to stop with a step (increment/decrement)
 # range(5, 10, 2) - generates the numbers 5, 7, 9 (start=5, stop=10, step=2)
+"""
+# discussing dictionary
+
+student_roll_name_dict = {
+    1: "Abul",
+    2: "Babul",
+    3: "Cabul",
+    4: "Dabul",
+    5: "Ebul"
+}
+student_roll_name_dict[6] = "Fabul" # adding a new key-value pair to the dictionary
+student_roll_name_dict.pop(2) # removes the key-value pair with key 2 from the dictionary
+
+# print(student_roll_name_dict) # prints the name of the student with roll number 3, 3 is key and "Cabul" is value
+
+# for key in student_roll_name_dict:
+#     print("Roll Number: ", key, ", Name: ", student_roll_name_dict[key]) # prints the roll number and name of each student in the dictionary
+
+# print(student_roll_name_dict.items()) # prints the key-value pairs of the dictionary as a list of tuples
+
+# for key, value in student_roll_name_dict.items():
+#     print("Roll Number: ", key, ", Name: ", value) # prints the roll number and name of each student in the dictionary
+
+# print(student_roll_name_dict.keys()) # prints the keys of the dictionary
+# print(student_roll_name_dict.values()) # prints the values of the dictionary
+
+students_roll_marks_dict = {
+    1: 100,
+    2: 90,
+    3: 78,
+    4: 92,
+    5: 87,
+    6: 35
+}
+number_list = students_roll_marks_dict.values()
+# total_marks = 0
+# for mark in number_list:
+#     total_marks = total_marks + mark
+
+total_marks = sum(number_list) # using the built-in sum function to calculate the total marks
+
+average_marks = total_marks / len(students_roll_marks_dict) if len(students_roll_marks_dict) > 0 else 0
+print("Average Marks: ", round(average_marks, 2)) # round the average marks to 2 decimal places
+
+
+student_info_list = []
+while True:
+    roll_number = input("Enter the roll number of the student to get the marks (or 'exit' to quit): ")
+    if roll_number == "exit":
+        break
+    roll_number = int(roll_number) # convert the input to an integer
+
+    student_age = input("Enter the age of the student: ")
+    student_age = int(student_age) # convert the input to an integer
+
+    student_name = input("Enter the name of the student: ")
+
+    student_info = {
+        "roll_number": roll_number,
+        "age": student_age,
+        "name": student_name
+    }
+    student_info_list.append(student_info) # add the student info dictionary to the list
+
+# print("Student Information: ", student_info_list)
+for student in student_info_list:
+    print("Roll Number: ", student["roll_number"], ", Age: ", student["age"], ", Name: ", student["name"])

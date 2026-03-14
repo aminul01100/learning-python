@@ -1,0 +1,9 @@
+1. project one
+business: Contact book system
+functionalities:
+    1. add a Contact
+    2. view a Contact
+    3. search a Contact
+    4. delete a Contact
+    5. update a Contact
+

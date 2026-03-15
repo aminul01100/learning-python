@@ -81,7 +81,7 @@ contact_book.add_contact("Evan liam", "9998887777", "321 Pine St")
 # print("Contact Book after adding contacts:", contact_book)
 
 # print("Viewing contact with id 2:", contact_book.get_contact(2))
-matched_contact_list = contact_book.search_contact("li")
+# matched_contact_list = contact_book.search_contact("li")
 """
 want to develop list of the string from the contact lists
 option 1:
@@ -98,5 +98,60 @@ list_of_matched_contact_info = [str(contact) for contact in matched_contact_list
 # print("Matched contacts:", list_of_matched_contact_info)
 
 # updating the name of the contact with id 3 to "Charlie Brown"
-updated_status = contact_book.update_contact_name(3, "Charlie Brown")
-print(contact_book.get_contact(3))
+# updated_status = contact_book.update_contact_name(3, "Charlie Brown")
+# print(contact_book.get_contact(3))
+
+def take_input_and_add_contact():
+    try:
+        name = input("Please enter the contact name: ")
+        phone_number = input("Please enter the contact phone number: ")
+        address = input("Please enter the contact address (optional): ")
+        if address == "":
+            address = None
+
+        # validating the user input for name and phone number fields
+        if name == "" or phone_number == "":
+            logger.error("Name and phone number are required fields. Contact cannot be added.")
+            return False
+
+        contact_book.add_contact(name, phone_number, address)
+        print("Contact added successfully!")
+        return True
+    except Exception as e:
+        logger.error(f"An error occurred while adding the contact: {e}")
+        return False
+
+def take_input_and_view_contact():
+    try:
+        contact_id = input("Please enter the contact id: ")
+        contact_id = int(contact_id)
+        contact = contact_book.get_contact(contact_id)
+        if contact:
+            print(f"Contact details for {contact_id}: {contact}")
+        else:
+            logger.error("Contact not found.")
+    except Exception as e:
+        logger.error(f"An error occurred while viewing the contact: {e}", exc_info=True)
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+while True:
+    print("Here are the functionalities that a user can choose-")
+    print("1. add a Contact")
+    print("2. view a Contact (provide a contact id and get the contact details)")
+    print("3. search a Contact")
+    print("4. update a Contact Name")
+
+    user_input = input("Please enter the number corresponding to the functionality you want to use: ")
+    if user_input == "1":
+        # name, phone number and address (optinal)
+        _ = take_input_and_add_contact()
+        continue
+
+    elif user_input == "2":
+        take_input_and_view_contact()
+        continue
+
+    

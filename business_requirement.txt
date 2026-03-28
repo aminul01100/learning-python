@@ -1,0 +1,18 @@
+1. project one
+business: Contact book system
+functionalities:
+    1. add a Contact
+    2. view a Contact
+    3. search a Contact
+    4. delete a Contact
+    5. update a Contact
+
+2. project two
+business: Library Management system
+functionalities:
+    1. add a book
+    2. update a book
+    3. view list of the books
+    4. borrow a book
+    5. return the borrowed book
+    6. view list of the borrowed books

@@ -23,26 +23,26 @@ class Card(PaymentOption):
         self.card_number = ""
         self.cvv = ""
 
-    def check_card_validity(self):
+    def _check_card_validity(self):
         # logic to check card validity
         return True
 
-    def check_funds(self, amount):
+    def _check_funds(self, amount):
         # logic to check if the card has sufficient funds
         return True
 
-    def take_card_details(self):
+    def _take_card_details(self):
         self.card_number = input("Enter your card number: ")
         self.cvv = input("Enter your card CVV: ")
 
     def pay(self, amount):
-        self.take_card_details()
+        self._take_card_details()
 
-        if not self.check_card_validity():
+        if not self._check_card_validity():
             print("Invalid card details.")
             return False
 
-        if not self.check_funds(amount):
+        if not self._check_funds(amount):
             print("Insufficient funds.")
             return False
         # logic to process the card payment
@@ -68,15 +68,44 @@ class Cash(PaymentOption):
         print(f"Receipt: Paid {amount} in cash.")
 
 class PayPay(PaymentOption):
-    pass
+    def __init__(self):
+        self.account_number = ""
+
+    def _check_account_validity(self):
+        # logic to check account validity
+        return True
+
+    def _check_funds(self, amount):
+        # logic to check if the account has sufficient funds
+        return True
+
+    def _take_account_details(self):
+        self.account_number = input("Enter your account number: ")
+
+    def pay(self, amount):
+        self._take_account_details()
+
+        if not self._check_account_validity():
+            print("Invalid account number.")
+            return False
+
+        if not self._check_funds(amount):
+            print("Insufficient funds.")
+            return False
+        # logic to process the paypay payment
+
+        print(f"Processing paypay payment of amount {amount} with account number {self.account_number}")
+        print("Payment successful. Generating receipt...")
+        print(f"Receipt: Paid {amount} using PayPay account ending with {self.account_number[-4:]}")
 
 
-
-
+# when we have more payment options, we can easily add them to the PaymentOptions dictionary and 
+# implement the corresponding class without changing the existing code structure. 
+# This makes our payment system scalable and maintainable.
 PaymentOptions = {
     "1": Card,
     "2": Cash,
-    "3": PayPay # we can implement this class similarly to Card and Cash
+    "3": PayPay
 }
 PaymentOptionsNames = ["1. Card", "2. Cash", "3. PayPay"]
 
